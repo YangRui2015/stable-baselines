@@ -488,7 +488,8 @@ class SAC(OffPolicyRLModel):
                 else:
                     mean_reward = round(float(np.mean(episode_rewards[-101:-1])), 1)
 
-                num_episodes = len(episode_rewards) - 1 # as we appended a new term just now
+                # substract 1 as we appended a new term just now
+                num_episodes = len(episode_rewards) - 1 
                 # Display training infos
                 if self.verbose >= 1 and done and log_interval is not None and num_episodes % log_interval == 0:
                     fps = int(step / (time.time() - start_time))
